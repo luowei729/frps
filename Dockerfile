@@ -14,13 +14,13 @@ RUN if [ "$(uname -m)" = "x86_64" ]; then export PLATFORM=amd64 ; \
 	elif [ "$(uname -m)" = "armv7" ]; then export PLATFORM=arm ; \
 	elif [ "$(uname -m)" = "armv7l" ]; then export PLATFORM=arm ; \
 	elif [ "$(uname -m)" = "armhf" ]; then export PLATFORM=arm ; fi \
-	&& wget --no-check-certificate https://github.com/luowei729/frp/archive/refs/tags/v1.0.0.tar.gz \
-	&& tar xzf v1.0.0.tar.gz \
-	&& cd frp-1.0.0 \
+	&& wget --no-check-certificate https://github.com/fatedier/frp/releases/download/v${VERSION}/frp_${VERSION}_linux_${PLATFORM}.tar.gz \
+	&& tar xzf frp_${VERSION}_linux_${PLATFORM}.tar.gz \
+	&& cd frp_${VERSION}_linux_${PLATFORM} \
 	&& mkdir /frp \
 	&& mv frps frps.toml /frp \
 	&& cd .. \
-	&& rm -rf *.tar.gz  v1.0.0
+	&& rm -rf *.tar.gz frp_${VERSION}_linux_${PLATFORM}
 
 VOLUME /frp
 
